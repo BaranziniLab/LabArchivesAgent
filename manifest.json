@@ -1,0 +1,41 @@
+{
+  "name": "labarchivesagent",
+  "display_name": "LabArchivesAgent",
+  "description": "MCP access to LabArchives electronic lab notebook metadata and entries, with read-first notebook inspection and confirmation-gated API requests.",
+  "version": "0.1.0",
+  "entry_point": "labarchivesagent",
+  "repository": "https://github.com/BaranziniLab/LabArchivesAgent",
+  "license": "Apache-2.0",
+  "tools_count": 4,
+  "env_vars": [
+    {
+      "key": "LABARCHIVES_API_KEY",
+      "required": true,
+      "auto_propagate": false,
+      "description": "LabArchives API key or token",
+      "secret": true
+    },
+    {
+      "key": "LABARCHIVES_BASE_URL",
+      "required": false,
+      "auto_propagate": true,
+      "default": "https://api.labarchives.com",
+      "description": "LabArchives API base URL",
+      "secret": false
+    },
+    {
+      "key": "LABARCHIVES_LOG_LEVEL",
+      "required": false,
+      "auto_propagate": true,
+      "default": "INFO",
+      "description": "Logging level",
+      "secret": false
+    }
+  ],
+  "skills": [
+    {
+      "name": "labarchives-eln",
+      "description": "Use LabArchivesAgent for LabArchives platform-aware scientific workflow inspection and guarded API access."
+    }
+  ]
+}
