@@ -1,0 +1,14 @@
+{
+  "kit_spec": 1,
+  "service": "labarchives",
+  "service_title": "LabArchives",
+  "kind": "tombstone",
+  "notice": {
+    "status": "retired",
+    "date": "2026-11-22",
+    "reason": "LabArchives signs every API call with an access key id, an expiry and an HMAC signature on a regional host. This extension sent a plain key instead, so it never worked, and no LabArchives account was available to test a rebuild.",
+    "use_instead": "Open your notebooks in LabArchives in the browser. If your lab needs LabArchives in Biorouter, ask for it in BAAM."
+  },
+  "id": "labarchivesagent",
+  "display_name": "LabArchivesAgent"
+}

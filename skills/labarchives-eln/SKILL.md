@@ -1,25 +1,10 @@
 ---
 name: labarchives-eln
-description: Use LabArchivesAgent when working with LabArchives platform data, API resources, provenance, or reproducibility checks from inside BioRouter.
-license: Apache-2.0
-user-invocable: false
+description: "Retired with LabArchivesAgent. This skill no longer holds instructions."
 ---
 
-# LabArchivesAgent Skill
+# labarchives-eln has moved
 
-Use this extension to inspect LabArchives notebooks and entries, preserving notebook provenance and avoiding write actions unless explicitly confirmed.
+This skill was bundled with LabArchivesAgent, which is retired. LabArchivesAgent never reached LabArchives: the LabArchives API needs signed requests that the extension did not send. Open your notebooks in LabArchives in the browser instead, and remove LabArchivesAgent from Biorouter.
 
-## Operating rules
-
-- Start with `get_labarchivesagent_status` to confirm whether credentials and base URLs are configured.
-- Use `get_labarchivesagent_request_plan` before any endpoint that may create, update, launch, upload, or delete a resource.
-- Prefer read-only `GET` requests through `call_labarchivesagent_api` while exploring.
-- Do not pass `allow_mutation=true` unless the user has explicitly approved the exact operation, target resource, and expected side effect.
-- Preserve platform IDs, versions, owners/authors, timestamps, and URLs in any report.
-- Never print API tokens, passwords, bearer headers, or session cookies.
-
-## Useful starting endpoints
-
-- `/notebooks`
-- `/entries`
-- `/folders`
+LabArchivesAgent was retired on 2026-11-22 and no longer calls any service. Why: LabArchives signs every API call with an access key id, an expiry and an HMAC signature on a regional host. This extension sent a plain key instead, so it never worked, and no LabArchives account was available to test a rebuild. Use instead: Open your notebooks in LabArchives in the browser. If your lab needs LabArchives in Biorouter, ask for it in BAAM.

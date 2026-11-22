@@ -1,42 +1,37 @@
 # LabArchivesAgent
 
-MCP access to LabArchives electronic lab notebook metadata and entries, with read-first notebook inspection and confirmation-gated API requests.
+Retired. This extension no longer calls LabArchives and only reports that it is retired. Remove it.
 
-This repository follows the BioRouter `.brxt` extension convention used by `SPOKEAgent` and `UCSFOMOPAgent`: a root `manifest.json`, Python package under `src/`, and optional bundled skills under `skills/`.
+Current version: **0.2.0**
+
+> **Retired.** LabArchivesAgent was retired on 2026-11-22 and no longer calls any service. Why: LabArchives signs every API call with an access key id, an expiry and an HMAC signature on a regional host. This extension sent a plain key instead, so it never worked, and no LabArchives account was available to test a rebuild. Use instead: Open your notebooks in LabArchives in the browser. If your lab needs LabArchives in Biorouter, ask for it in BAAM.
+
+This is the final release of a retired Biorouter extension. It replaces every
+earlier tool with one, `labarchives_status`, which shows the notice above. It holds no
+credentials, reads no setting and calls no service. Remove the extension in
+Biorouter once you no longer need the notice.
 
 ## Tools
 
-- `get_labarchivesagent_status`: report configured environment variables without revealing secrets.
-- `get_labarchivesagent_request_plan`: explain whether an API request is read-only or requires explicit mutation approval.
-- `call_labarchivesagent_api`: call a platform API endpoint with write methods blocked unless `allow_mutation=true`.
-- `summarize_labarchivesagent_resource`: summarize a JSON export or API payload without making a network call.
+- `labarchives_status`: shows why LabArchivesAgent was retired and what to use instead. It calls no service.
 
-## Configuration
+## Bundled skills
 
-| Variable | Required | Secret | Purpose |
-|---|---:|---:|---|
-| `LABARCHIVES_API_KEY` | true | true | LabArchives API key or token |
-| `LABARCHIVES_BASE_URL` | false | false | LabArchives API base URL |
-| `LABARCHIVES_LOG_LEVEL` | false | false | Logging level |
+Every skill an earlier release bundled is kept, and each now says where its content
+moved. An update never deletes a file an earlier version installed, so keeping the
+paths is what replaces the old instructions.
 
-
-## Build
+## Develop and release
 
 ```bash
 uv sync
-scripts/build_brxt.sh
+uv run python -m unittest discover -s tests -v
+uv run python scripts/build_brxt.py
 ```
 
-The bundle is written to `dist/labarchivesagent.brxt`.
-
-## Install in BioRouter
-
-```bash
-biorouter extension install dist/labarchivesagent.brxt
-```
-
-Add the required secrets with `--secret KEY=value` or configure them in the BioRouter UI.
+Do not edit `src/labarchivesagent/_kit/` or `tests/kit_testing/`: they are vendored from the BRXT
+adapter kit in the Biorouter repository (`scripts/brxt-adapter-kit/`).
 
 ## License
 
-Apache-2.0. See `LICENSE`.
+Apache-2.0. See `LICENSE` and `NOTICE`.

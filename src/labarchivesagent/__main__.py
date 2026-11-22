@@ -1,4 +1,4 @@
-from labarchivesagent.cli import main
+from labarchivesagent.server import main
 
 if __name__ == "__main__":
     main()
